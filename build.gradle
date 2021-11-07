@@ -6,7 +6,7 @@ plugins {
   id 'org.liquibase.gradle' version '2.0.4'
 }
 
-group = 'exercise'
+group = 'people'
 
 repositories {
   mavenCentral()
@@ -42,22 +42,12 @@ diffChangeLog {
 liquibase {
   activities {
     main {
-      // Указываем путь, по которому будет сгенерирован файл миграции
-      changeLogFile 'src/main/resources/db/changelog/changelog-master.xml'
-      // Указывем источник, с которым будут сравниваться изменния
-      // Это база данных, изначально она пустая
-      url 'jdbc:h2:./hexlet'
-      // Имя пользователя и пароль для подключения к базе
+            changeLogFile 'src/main/resources/db/changelog/changelog-master.xml'
+      url 'jdbc:h2:./people'
       username 'sa'
       password ''
-      // Указывем, откуда мы будем брать изменения
-      // Это модели
-      // Указываем пакет, в котором расположены модели
       referenceUrl 'hibernate:spring:exercise.model' +
-                    // Указываем диалект
                    '?dialect=org.hibernate.dialect.H2Dialect' +
-                   // Указываем правила именования таблиц и столбцов,
-                   // чтобы они соответствовали правилам Spring
                    '&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy'
     }
   }

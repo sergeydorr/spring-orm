@@ -89,7 +89,7 @@ public class AppTest {
             .perform(
                 patch("/people/1")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content("{\"firstName\": \"Petery\", \"lastName\": \"Walker\"}")
+                    .content("{\"firstName\": \"Peter\", \"lastName\": \"Werner\"}")
             )
             .andReturn()
             .getResponse();
@@ -103,7 +103,7 @@ public class AppTest {
 
         assertThat(response.getStatus()).isEqualTo(200);
         assertThat(response.getContentType()).isEqualTo(MediaType.APPLICATION_JSON.toString());
-        assertThat(response.getContentAsString()).contains("Petery", "Walker");
+        assertThat(response.getContentAsString()).contains("Peter", "Werner");
     }
 
     @Test
